@@ -98,6 +98,82 @@ html {
     width: 100%;
 }
 
+/* Hamburger Menu (Hidden by default on system) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--burgundy);
+    transition: all 0.3s;
+    border-radius: 3px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile Navigation */
+@media (max-width: 992px) {
+    .nav-container {
+        position: relative;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 0;
+        gap: 2rem;
+        transition: right 0.3s ease;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        font-size: 1.3rem;
+        padding: 1.5rem;
+        display: block;
+    }
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -676,7 +752,7 @@ section {
     text-decoration: none;
     font-size: 0.9rem;
     transition: background 0.3s, transform 0.2s;
-    align-self: flex-start;
+    align-self: center;
 }
 
 .featured-btn:hover {
@@ -767,6 +843,15 @@ section {
     border-radius: 20px;
     font-size: 0.9rem;
     border: 1px solid rgba(139, 21, 56, 0.3);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.tech-tag:hover {
+    background: rgba(139, 21, 56, 0.2);
+    border-color: var(--burgundy);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(139, 21, 56, 0.3);
 }
 
 .github-link {
